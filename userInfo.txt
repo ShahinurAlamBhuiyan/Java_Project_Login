@@ -1,6 +1,3 @@
-Shahin Bhuiyan
-shahin@gmail.com shahin12
-Male 04/Mar/1997
-Nafis Hossain
-nafis@gmail.com nafis12
-Male 06/Feb/2003
+Shahin Bhuiyan shahin@gmail.com shahin12 Male 05/Jun/1997
+Tashin Parvez tashin@gmail.com tashin12 Male 06/Apr/1993
+Nafis Hossain nafis@gmail.com nafis12 Male 06/Apr/1996

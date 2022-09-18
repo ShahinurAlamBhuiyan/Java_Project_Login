@@ -118,17 +118,21 @@ public class SignUpFrame extends JFrame {
                         !birthMonthText.getText().equals(" month") &&
                         !birthYearText.getText().equals(" year")
                 ){
-                    try {
-                        FileWriter writer = new FileWriter("userInfo.txt", true);
-                        writer.write(firstNameText.getText() + " " + lastNameText.getText() + "\n");
-                        writer.write(emailText.getText() + " " + newPasswordText.getText() + "\n");
-                        writer.write(genderText.getText() + " " + birthdayText.getText() + "/" + birthMonthText.getText() + "/" + birthYearText.getText() + "\n");
-                        writer.close();
-                        JOptionPane.showMessageDialog(null,"Information saved successfully!");
+                    if(emailText.getText().equals(reEmailText.getText()))
+                    {
+                        try {
+                            FileWriter writer = new FileWriter("userInfo.txt", true);
+                            writer.write(firstNameText.getText() + " " + lastNameText.getText() + " " + emailText.getText() + " " + String.valueOf(newPasswordText.getPassword()) +" "+ genderText.getText() + " " + birthdayText.getText() + "/" + birthMonthText.getText() + "/" + birthYearText.getText() +"\n");
+                            writer.close();
+                            JOptionPane.showMessageDialog(null,"Information saved successfully!");
 
-                    } catch (Exception err) {
-                        System.out.println(err);
+                        } catch (Exception err) {
+                            System.out.println(err);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Your email is not matched!");
                     }
+
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please fill up all information.");
@@ -142,8 +146,6 @@ public class SignUpFrame extends JFrame {
 //                this.dispose();
 
             }
-
-
         });
 
     }

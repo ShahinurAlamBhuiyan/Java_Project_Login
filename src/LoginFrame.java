@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoginFrame extends JFrame {
@@ -36,7 +37,7 @@ public class LoginFrame extends JFrame {
         this.setBackground(Color.white);
 
 
-
+        ArrayList<UserInformation> usersInfo = new ArrayList<UserInformation>();
         loginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,79 +47,26 @@ public class LoginFrame extends JFrame {
                     try{
                         File file  = new File("userInfo.txt");
                         Scanner fileReader = new Scanner(file);
-                        boolean flag = true;
-//                        boolean isMatched = false;
-                        boolean isEmailMatched = false;
-                        boolean isPasswordMatched = false;
-                        String line;
-                        while(fileReader.hasNextLine() && flag)
+                        boolean isMatched = false;
+
+                        while(fileReader.hasNext())
                         {
-                            try{
-                                line = fileReader.next();
-                            }catch (Exception err){continue;}
-
-//                            if(line.equals(emailText.getText()) &&
-//                                    line.equals(String.valueOf(passwordText.getPassword()))){
-//                                isMatched = true;
-//                            }
-                            if(line.equals(emailText.getText())){
-                                isEmailMatched = true;
-                                System.out.println("Email matched");
-                            }
-
-                            if(line.equals(String.valueOf(passwordText.getPassword()))){
-                                isPasswordMatched = true;
-                                System.out.println("Password matched");
-                            }
-
-                            if(isEmailMatched && isPasswordMatched){
-                                System.out.println("Login Successful");
-                                flag = false;
-                            }
-
+                            usersInfo.add(new UserInformation(fileReader.next(), fileReader.next(), fileReader.next(), fileReader.next(),fileReader.next(),fileReader.next()));
                         }
 
-                        if(!isEmailMatched){
-                            JOptionPane.showMessageDialog(null, "Email is not valid");
-                        }
-                        if(!isPasswordMatched){
-                            JOptionPane.showMessageDialog(null, "Password is not valid");
-                        }
-
-
-
-
-
-
-
-
-                        /*
-                        while(fileReader.hasNextLine() && flag){
-                            try{
-                                line = fileReader.next();
-                            }catch(Exception err){continue;}
-
-                            if(line.equals(emailText.getText())){
-
-                                System.out.println("email matched");
-                                if(line.equals(String.valueOf(passwordText.getPassword()))){
-                                    System.out.println("password matched");
-                                }else{
-//                                    flag = false;
-                                    JOptionPane.showMessageDialog(null, "Incorrect password.");
-                                }
-                                if(line.equals(emailText.getText()) && line.equals(String.valueOf(passwordText.getPassword()))){
-                                    flag = false;
-                                }
-                            }else{
-//                                flag = false;
-                                JOptionPane.showMessageDialog(null,"There is no user with this email.Please signup first.");
+                        for(UserInformation user : usersInfo){
+                            System.out.println(user.email + " " + user.password);
+                            if(user.email.equals(emailText.getText()) && user.password.equals(String.valueOf(passwordText.getPassword()))){
+                                isMatched = true;
+                                JOptionPane.showMessageDialog(null, "Login successful!");
+                                break;
                             }
                         }
-                        */
 
+                        if(!isMatched){
+                            JOptionPane.showMessageDialog(null, "Email or Password is not matched!");
+                        }
                     }catch (Exception err){
-                        System.out.println("Exception occurred");
                         System.out.println(e);
                     }
                 }else{
@@ -126,7 +74,6 @@ public class LoginFrame extends JFrame {
                 }
             }
         });
-
     }
 
 }
@@ -139,14 +86,13 @@ class UserInformation{
     String password;
     String gender;
     String birthday;
-
-    public UserInformation(String firstName, String lastName, String email, String password, String gender){
+    public UserInformation(String firstName, String lastName, String email, String password, String gender, String birthday){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.gender = gender;
+        this.birthday = birthday;
     }
-
 }
 
