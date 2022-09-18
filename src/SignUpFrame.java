@@ -12,7 +12,7 @@ public class SignUpFrame extends JFrame {
     public SignUpFrame() {
         this.setSize(480, 650);
         this.setLocationRelativeTo(null);
-        this.setTitle("Todo Application");
+        this.setTitle("Todo Nafis Part");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 //        this.dispose();
