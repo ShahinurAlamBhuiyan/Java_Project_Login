@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoginFrame extends JFrame {
-
+    boolean isMatched = false;
     public LoginFrame(){
+
         this.setSize(480, 650);
         this.setLocationRelativeTo(null);
         this.setTitle("Todo Application");
@@ -47,7 +48,6 @@ public class LoginFrame extends JFrame {
                     try{
                         File file  = new File("userInfo.txt");
                         Scanner fileReader = new Scanner(file);
-                        boolean isMatched = false;
 
                         while(fileReader.hasNext())
                         {
@@ -59,6 +59,7 @@ public class LoginFrame extends JFrame {
                             if(user.email.equals(emailText.getText()) && user.password.equals(String.valueOf(passwordText.getPassword()))){
                                 isMatched = true;
                                 JOptionPane.showMessageDialog(null, "Login successful!");
+                                new ProfileFrame();
                                 break;
                             }
                         }
