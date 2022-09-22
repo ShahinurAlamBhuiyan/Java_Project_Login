@@ -43,8 +43,7 @@ public class LoginFrame extends JFrame {
         signupBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignUpFrame signUpFrame = new SignUpFrame();
-                signUpFrame.show();
+                new SignUpFrame();
                 dispose();
             }
         });
@@ -71,7 +70,7 @@ public class LoginFrame extends JFrame {
                             if(user.email.equals(emailText.getText()) && user.password.equals(String.valueOf(passwordText.getPassword()))){
                                 isMatched = true;
                                 JOptionPane.showMessageDialog(null, "Login successful!");
-                                new ProfileFrame();
+                                new ProfileFrame(user.firstName, user.lastName, user.email, user.password,user.birthday, user.gender);
                                 dispose();
                                 break;
                             }
@@ -94,20 +93,5 @@ public class LoginFrame extends JFrame {
 }
 
 
-class UserInformation{
-    String firstName;
-    String lastName;
-    String email;
-    String password;
-    String gender;
-    String birthday;
-    public UserInformation(String firstName, String lastName, String email, String password, String gender, String birthday){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.birthday = birthday;
-    }
-}
+
 

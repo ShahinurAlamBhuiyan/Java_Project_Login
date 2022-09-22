@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 public class SignUpFrame extends JFrame {
     String[] genders = {"Male", "Female"};
@@ -11,12 +12,7 @@ public class SignUpFrame extends JFrame {
     String[] years = {"1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015","2016","2017","2018","2019","2020","2021","2022" };
     public SignUpFrame() {
 
-        AllButton signupBtn = new AllButton("Sign up",130,500,140, 40);
-        this.add(signupBtn);
-        this.add(new AllLabel("Already have account?",135, 470, 250,20));
 
-        AllButton loginBtn = new AllButton("login now", 280, 470, 100, 20);
-        this.add(loginBtn);
 
         this.add(new AllLabel("Sign up Form", 20, 5, 250, 30));
 
@@ -54,14 +50,22 @@ public class SignUpFrame extends JFrame {
         AllTextField birthMonthText = new AllTextField(" ",false,130, 420, 90, 50);
         this.add(birthMonthText);
 
+        AllButton signupBtn = new AllButton("Sign up",130,500,140, 40);
+        this.add(signupBtn);
+        this.add(new AllLabel("Already have account?",135, 470, 250,20));
+
+        AllButton loginBtn = new AllButton("login now", 280, 470, 100, 20);
+        this.add(loginBtn);
+
+
         AllComboBOx dayBox =new AllComboBOx(days,225, 420, 75, 50);
         this.add(dayBox);
-        AllTextField birthdayText = new AllTextField(" ",false,225, 420, 75, 50);
+        AllTextField birthdayText = new AllTextField(" ",false,205, 420, 0, 0);
         this.add(birthdayText);
 
         AllComboBOx yearBox = new AllComboBOx(years,305, 420, 85, 50);
         this.add(yearBox);
-        AllTextField birthYearText = new AllTextField(" ",false,205, 420, 85, 50);
+        AllTextField birthYearText = new AllTextField(" ",false,205, 420, 0, 0);
         this.add(birthYearText);
 
 
@@ -71,8 +75,8 @@ public class SignUpFrame extends JFrame {
         this.setSize(480, 650);
         this.setLocationRelativeTo(null);
         this.setTitle("Todo Application");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.white);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
         signupBtn.addActionListener(new ActionListener() {
@@ -91,7 +95,7 @@ public class SignUpFrame extends JFrame {
                             writer.write(firstNameText.getText() + " " + lastNameText.getText() + " " + emailText.getText() + " " + String.valueOf(newPasswordText.getPassword()) +" "+ genderBox.getSelectedItem().toString() + " " + dayBox.getSelectedItem().toString() + "/" + monthBox.getSelectedItem().toString() + "/" + yearBox.getSelectedItem().toString() +"\n");
                             writer.close();
                             JOptionPane.showMessageDialog(null,"Information saved successfully!");
-                            new ProfileFrame();
+                            new ProfileFrame(firstNameText.getText(), lastNameText.getText(), emailText.getText(), String.valueOf(newPasswordText.getPassword()),dayBox.getSelectedItem().toString() + "/" + monthBox.getSelectedItem().toString() + "/" + yearBox.getSelectedItem().toString() ,genderBox.getSelectedItem().toString());
                             dispose();
 
                         } catch (Exception err) {
@@ -111,8 +115,7 @@ public class SignUpFrame extends JFrame {
         loginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginFrame loginFrame =  new LoginFrame();
-                loginFrame.show();
+                new LoginFrame();
                 dispose();
             }
         });

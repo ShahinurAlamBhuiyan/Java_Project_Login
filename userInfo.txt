@@ -4,3 +4,5 @@ Nafis Hossain nafis@gmail.com nafis12 Male 06/Apr/1996
 John Abraham john@gmail.com john12 Male 04/Mar/1992
 Arjun Pal arjun@gmail.com arjun12 Male 02/Mar/1991
 Md.Sabbir Hossain sabbir1@gmail.com sabbir12 Male 01/Jan/1994
+Nur Hasib hasib@gmail.com hasib12 Male 01/Jan/1994
+Fahad Potti fahad@gmail.com fahad12 Male 01/Jan/1996

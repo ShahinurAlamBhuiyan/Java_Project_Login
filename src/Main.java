@@ -1,7 +1,9 @@
 import javax.swing.*;
 
 public class Main {
+
     public static void main(String[] args) {
+
         new SignUpFrame();
 //        new LoginFrame();
     }
@@ -44,5 +46,23 @@ class AllTextField extends JTextField {
     public AllTextField(String text,boolean isEnable, int x, int y, int width, int height) {
         this(text, x, y, width, height);
         this.setEnabled(isEnable);
+    }
+}
+
+
+class UserInformation{
+    String firstName;
+    String lastName;
+    String email;
+    String password;
+    String gender;
+    String birthday;
+    public UserInformation(String firstName, String lastName, String email, String password, String gender, String birthday){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.birthday = birthday;
     }
 }
