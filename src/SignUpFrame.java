@@ -10,12 +10,13 @@ public class SignUpFrame extends JFrame {
     String[] days = {"01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25","26", "27", "28", "29", "30", "31"};
     String[] years = {"1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015","2016","2017","2018","2019","2020","2021","2022" };
     public SignUpFrame() {
-        this.setSize(480, 650);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Todo Application");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-//        this.dispose();
+
+        AllButton signupBtn = new AllButton("Sign up",130,500,140, 40);
+        this.add(signupBtn);
+        this.add(new AllLabel("Already have account?",135, 470, 250,20));
+
+        AllButton loginBtn = new AllButton("login now", 280, 470, 100, 20);
+        this.add(loginBtn);
 
         this.add(new AllLabel("Sign up Form", 20, 5, 250, 30));
 
@@ -50,59 +51,29 @@ public class SignUpFrame extends JFrame {
         this.add(new AllLabel("Birthday: ",65, 420, 100, 50));
         AllComboBOx monthBox = new AllComboBOx(months,130, 420, 90, 50);
         this.add(monthBox);
-        AllTextField birthMonthText = new AllTextField(" month",false,130, 420, 90, 50);
+        AllTextField birthMonthText = new AllTextField(" ",false,130, 420, 90, 50);
         this.add(birthMonthText);
 
         AllComboBOx dayBox =new AllComboBOx(days,225, 420, 75, 50);
         this.add(dayBox);
-        AllTextField birthdayText = new AllTextField(" day",false,225, 420, 75, 50);
+        AllTextField birthdayText = new AllTextField(" ",false,225, 420, 75, 50);
         this.add(birthdayText);
 
         AllComboBOx yearBox = new AllComboBOx(years,305, 420, 85, 50);
         this.add(yearBox);
-        AllTextField birthYearText = new AllTextField(" year",false,305, 420, 85, 50);
+        AllTextField birthYearText = new AllTextField(" ",false,205, 420, 85, 50);
         this.add(birthYearText);
 
-        this.add(new AllLabel("Already have account?",135, 470, 250,20));
-        AllButton loginBtn = new AllButton("login now", 280, 470, 100, 20);
-        this.add(loginBtn);
-
-        AllButton signupBtn = new AllButton("Sign up",130,500,140, 40);
-        this.add(signupBtn);
 
 
+
+
+        this.setSize(480, 650);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Todo Application");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.white);
-
-
-        genderBox.addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               genderText.setText(genderBox.getSelectedItem().toString());
-           }
-        });
-
-
-        dayBox.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                birthdayText.setText(dayBox.getSelectedItem().toString());
-            }
-        });
-
-        monthBox.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                birthMonthText.setText(monthBox.getSelectedItem().toString());
-            }
-        });
-
-        yearBox.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                birthYearText.setText(yearBox.getSelectedItem().toString());
-            }
-        });
-
+        this.setVisible(true);
 
         signupBtn.addActionListener(new ActionListener() {
             @Override
@@ -111,20 +82,17 @@ public class SignUpFrame extends JFrame {
                         !lastNameText.getText().equals("") &&
                         !emailText.getText().equals("") &&
                         !reEmailText.getText().equals("") &&
-                        !String.valueOf(newPasswordText.getPassword()).equals("") &&
-
-                        !genderText.getText().equals("  select sex") &&
-                        !birthdayText.getText().equals(" day") &&
-                        !birthMonthText.getText().equals(" month") &&
-                        !birthYearText.getText().equals(" year")
+                        !String.valueOf(newPasswordText.getPassword()).equals("")
                 ){
                     if(emailText.getText().equals(reEmailText.getText()))
                     {
                         try {
                             FileWriter writer = new FileWriter("userInfo.txt", true);
-                            writer.write(firstNameText.getText() + " " + lastNameText.getText() + " " + emailText.getText() + " " + String.valueOf(newPasswordText.getPassword()) +" "+ genderText.getText() + " " + birthdayText.getText() + "/" + birthMonthText.getText() + "/" + birthYearText.getText() +"\n");
+                            writer.write(firstNameText.getText() + " " + lastNameText.getText() + " " + emailText.getText() + " " + String.valueOf(newPasswordText.getPassword()) +" "+ genderBox.getSelectedItem().toString() + " " + dayBox.getSelectedItem().toString() + "/" + monthBox.getSelectedItem().toString() + "/" + yearBox.getSelectedItem().toString() +"\n");
                             writer.close();
                             JOptionPane.showMessageDialog(null,"Information saved successfully!");
+                            new ProfileFrame();
+                            dispose();
 
                         } catch (Exception err) {
                             System.out.println(err);
@@ -143,10 +111,12 @@ public class SignUpFrame extends JFrame {
         loginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                this.dispose();
-
+                LoginFrame loginFrame =  new LoginFrame();
+                loginFrame.show();
+                dispose();
             }
         });
+
 
     }
 }

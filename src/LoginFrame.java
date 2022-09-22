@@ -10,12 +10,12 @@ public class LoginFrame extends JFrame {
     boolean isMatched = false;
     public LoginFrame(){
 
-        this.setSize(480, 650);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Todo Application");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
 
+        AllButton loginBtn = new AllButton("Login",130,340,140, 40);
+        this.add(loginBtn);
+
+        AllButton signupBtn = new AllButton("Sign up now", 280, 320, 100, 20);
+        this.add(signupBtn);
 
         this.add(new AllLabel("Login Form", 50, 50, 250, 30));
 
@@ -29,13 +29,25 @@ public class LoginFrame extends JFrame {
         passwordText.setBounds(130, 270, 300, 50);
 
         this.add(new AllLabel("Have no account?",135, 320, 250,20));
-        AllButton signupBtn = new AllButton("Sign up now", 280, 320, 100, 20);
-        this.add(signupBtn);
+        this.add(new AllLabel(" ",135, 320, 250,20));
 
-        AllButton loginBtn = new AllButton("Login",130,340,140, 40);
-        this.add(loginBtn);
 
+        this.setSize(480, 650);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Todo Application");
         this.setBackground(Color.white);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+
+
+        signupBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpFrame signUpFrame = new SignUpFrame();
+                signUpFrame.show();
+                dispose();
+            }
+        });
 
 
         ArrayList<UserInformation> usersInfo = new ArrayList<UserInformation>();
@@ -60,8 +72,10 @@ public class LoginFrame extends JFrame {
                                 isMatched = true;
                                 JOptionPane.showMessageDialog(null, "Login successful!");
                                 new ProfileFrame();
+                                dispose();
                                 break;
                             }
+
                         }
 
                         if(!isMatched){
