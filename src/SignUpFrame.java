@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileWriter;
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class SignUpFrame extends JFrame {
     String[] genders = {"Male", "Female"};
@@ -13,7 +12,7 @@ public class SignUpFrame extends JFrame {
     public SignUpFrame() {
 
 
-
+//        this.add(new AllLabel(, 30, 30, 400, 20));
         this.add(new AllLabel("Sign up Form", 20, 5, 250, 30));
 
         this.add(new AllLabel("First Name: ", 50, 120, 100, 50));
@@ -92,10 +91,10 @@ public class SignUpFrame extends JFrame {
                     {
                         try {
                             FileWriter writer = new FileWriter("userInfo.txt", true);
-                            writer.write(firstNameText.getText() + " " + lastNameText.getText() + " " + emailText.getText() + " " + String.valueOf(newPasswordText.getPassword()) +" "+ genderBox.getSelectedItem().toString() + " " + dayBox.getSelectedItem().toString() + "/" + monthBox.getSelectedItem().toString() + "/" + yearBox.getSelectedItem().toString() +"\n");
+                            writer.write(firstNameText.getText() + " " + lastNameText.getText() + " " + emailText.getText() + " " + String.valueOf(newPasswordText.getPassword()) +" "+ genderBox.getSelectedItem().toString() + " " + dayBox.getSelectedItem().toString() + "/" + monthBox.getSelectedItem().toString() + "/" + yearBox.getSelectedItem().toString() +" "+ LocalDate.now()+" "+"\n");
                             writer.close();
                             JOptionPane.showMessageDialog(null,"Information saved successfully!");
-                            new ProfileFrame(firstNameText.getText(), lastNameText.getText(), emailText.getText(), String.valueOf(newPasswordText.getPassword()),dayBox.getSelectedItem().toString() + "/" + monthBox.getSelectedItem().toString() + "/" + yearBox.getSelectedItem().toString() ,genderBox.getSelectedItem().toString());
+                            new ProfileFrame(emailText.getText(), String.valueOf(newPasswordText.getPassword()));
                             dispose();
 
                         } catch (Exception err) {

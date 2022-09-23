@@ -3,9 +3,7 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-
-        new SignUpFrame();
-//        new LoginFrame();
+        new LoginFrame();
     }
 }
 
@@ -57,6 +55,7 @@ class UserInformation{
     String password;
     String gender;
     String birthday;
+    String creatingTime;
     public UserInformation(String firstName, String lastName, String email, String password, String gender, String birthday){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -64,5 +63,10 @@ class UserInformation{
         this.password = password;
         this.gender = gender;
         this.birthday = birthday;
+    }
+
+    public UserInformation(String firstName, String lastName, String email, String password, String gender, String birthday, String createdTime){
+        this(firstName, lastName, email, password, gender, birthday);
+        this.creatingTime = createdTime;
     }
 }

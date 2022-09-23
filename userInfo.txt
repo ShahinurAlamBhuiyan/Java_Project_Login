@@ -1,8 +1,5 @@
-Shahin Bhuiyan shahin@gmail.com shahin12 Male 05/Jun/1997
-Tashin Parvez tashin@gmail.com tashin12 Male 06/Apr/1993
-Nafis Hossain nafis@gmail.com nafis12 Male 06/Apr/1996
-John Abraham john@gmail.com john12 Male 04/Mar/1992
-Arjun Pal arjun@gmail.com arjun12 Male 02/Mar/1991
-Md.Sabbir Hossain sabbir1@gmail.com sabbir12 Male 01/Jan/1994
-Nur Hasib hasib@gmail.com hasib12 Male 01/Jan/1994
-Fahad Potti fahad@gmail.com fahad12 Male 01/Jan/1996
+Sabbir Hossain sabbir@gmail.com sabbir12 Male 01/Jan/1990 2022-09-22
+fahad hosaain fahad@gmail.com fahad12 Male 01/Jan/1990 2022-09-22 
+Raisa Nidhi raisa@gmail.com raisa12 Female 01/Jan/1990 2022-09-22 
+Sudanir Foya sudani@gmail.com sudani12 Male 01/Jan/1990 2022-09-22 
+hclvf fdsl kff kff Male 01/Jan/1990 2022-09-23 
